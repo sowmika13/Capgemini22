@@ -1,0 +1,103 @@
+1. Write a SQL statement to create a simple table countries including columns country_id,country_name and region_id.
+ Ans -  create table countries(country_id int,country_name varchar,region_id int);
+        select * from countries table;
+2. Write a SQL statement to create a simple table countries including columns country_id,country_name and region_id which already exist.
+ Ans -  create table countries(country_id int,country_name varchar,region_id int);
+        select * from countries table;
+3. Write a SQL statement to create the structure of a table dup_countries similar to countries.
+ Ans -	create table dup_countries(country_id int,country_name varchar,region_id int); 
+	insert into dup_countries values(1,"Ïndia",501);
+	insert into dup_countries values(2,"Usa",502);	
+	insert into dup_countries values(3,"Switz",503);
+4. Write a SQL statement to create a duplicate copy of countries table including structure and data by name dup_countries.
+ Ans -  create table dup_countries as(select * from countries);
+	select dup_countries;
+5. Write a SQL statement to create a table countries set a constraint NULL.
+ Ans -  insert into countries values(null,null,null);
+
+
+
+insert
+
+1. Write a SQL statement to insert a record with your own value into the table countries against each column.
+
+Here in the following is the structure of the table countries.
+
+    Column    |         Type          | Modifiers
+--------------+-----------------------+-----------
+ country_id   | character varying(2)  |
+ country_name | character varying(40) |
+ region_id    | numeric(10,0)         |
+ 
+Ans - create table countries(country_id int,country_name varchar,region_id int); 
+	insert into countries values(1,"Ïndia",501);
+	insert into countries values(2,"Usa",502);	
+	insert into countries values(3,"Switz",503);
+
+2. Write a SQL statement to insert one row into the table countries against the column country_id and country_name.
+
+Here in the following is the structure of the table countries.
+
+    Column    |         Type          | Modifiers
+--------------+-----------------------+-----------
+ country_id   | character varying(2)  |
+ country_name | character varying(40) |
+ region_id    | numeric(10,0)         |
+Ans - insert into countries values(7,'Russia',null);
+
+3. Write a SQL statement to create duplicates of countries table named country_new with all structure and data.
+
+Here in the following is the structure of the table countries.
+
+    Column    |         Type          | Modifiers
+--------------+-----------------------+-----------
+ country_id   | character varying(2)  |
+ country_name | character varying(40) |
+ region_id    | numeric(10,0)         |
+
+Ans - create table country_new(country_id int,country_name varchar,region_id int);
+	insert into country_new values(1,'India',501);
+	insert into country_new values(2,'Usa',502);
+	insert into country_new values(3,'Switz',503);
+	select * from country_new;
+
+
+4. Write a SQL statement to insert NULL values into region_id column for a row of countries table.
+Ans - insert into countries values(8,'Japan',null);
+
+5. Write a SQL statement to insert 3 rows by a single insert statement.
+Ans - insert into countries values(5,'France',505),(6,'Russia',506);
+
+
+select
+
+1. Write a query to display the names (first_name, last_name) using an alias name “First Name", "Last Name".
+Ans - select First_name "first_name",Last_name "last_name" from employee;
+2. Write a query to get a unique department ID from employee table.
+Ans - select Distinct dept_id from employee;
+
+3. Write a query to get the names (first_name, last_name), salary and 15% of salary as PF for all the employees.
+Ans - select first_name, last_name, salary, salary*.15 "PF" from employees;
+4. Write a query to get the employee ID, names (first_name, last_name) and salary in ascending order according to their salary.
+Ans - select emp_id, First_name"first_name",Last_name "last_name" from employee Order by salary Asc;
+5.Write a query to get the number of employees working with the company.
+Ans - select count(*) from employee;
+
+1. Write a query to display the name, including first_name and last_name and salary for all employees whose salary is out of the range between $10,000 and $15,000.
+Ans - select name ,first_name,Last_name,salary from employee where salary>10,000 and salary<15,000;
+2. Write a query to display the name, including first_name and last_name, and department ID who works in the department 30 or 100 and arrange the result in ascending order according to the department ID.
+Ans-SELECT first_name, last_name, dept_id FROM employees WHERE dept_id IN (30, 100) order by  dept_id  ASC;
+3. Write a query to display the name, including first_name and last_name, and salary who works in the department either 30 or 100 and salary is out of the range between $10,000 and $15,000.
+Ans- SELECT first_name, last_name, salary, dept_id from employees where salary not between 10000 and 15000 AND dept_id IN (30, 100);
+4. Write a query to display the name, including first_name and last_name and hire date for all employees who were hired in 1987.
+Ans- select first_name,Last_name ,hire_date from employee where  year(hire_date)  like '1987%';
++-------------+-------------+-------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+
+| EMPLOYEE_ID | FIRST_NAME  | LAST_NAME   | EMAIL    | PHONE_NUMBER       | HIRE_DATE  | JOB_ID     | SALARY   | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
++-------------+-------------+-------------+----------+--------------------+------------+------------+----------+----------------+------------+---------------+
+|         100 | Steven      | King        | SKING    | 515.123.4567       | 1987-06-17 | AD_PRES    | 24000.00 |           0.00 |          0 |   		  90 |
+|         101 | Neena       | Kochhar     | NKOCHHAR | 515.123.4568       | 1987-06-18 | AD_VP      | 17000.00 |           0.00 |        100 |            90 |
+|         102 | Lex         | De Haan     | LDEHAAN  | 515.123.4569       | 1987-06-19 | AD_VP      | 17000.00 |           0.00 |        100 |            90 |
+|         103 | Alexander   | Hunold      | AHUNOLD  | 590.423.4567       | 1987-06-20 | IT_PROG    |  9000.00 |           0.00 |        102 |            60 |
+|         104 | Bruce       | Ernst       | BERNST   | 590.423.4568       | 1987-06-21 | IT_PROG    |  6000.00 |           0.00 |        103 |            60 |
+|         105 | David       | Austin      | DAUSTIN  | 590.423.4569       | 1987-06-22 | IT_PROG    |  4800.00 |           0.00 |        103 |            60 |
+|         106 | Valli       | Pataballa   | VPATABAL | 590.423.4560       | 1987-06-23 | IT_PROG    |  4800.00 |           0.00 |        103 |            60 |
